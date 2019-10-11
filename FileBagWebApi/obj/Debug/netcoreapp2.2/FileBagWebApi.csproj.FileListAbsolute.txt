@@ -1,0 +1,14 @@
+c:\Users\rvilla\Desktop\DotNet\FileBagWebApi\FileBagWebApi\obj\Debug\netcoreapp2.2\FileBagWebApi.csprojAssemblyReference.cache
+c:\Users\rvilla\Desktop\DotNet\FileBagWebApi\FileBagWebApi\obj\Debug\netcoreapp2.2\FileBagWebApi.csproj.CoreCompileInputs.cache
+c:\Users\rvilla\Desktop\DotNet\FileBagWebApi\FileBagWebApi\obj\Debug\netcoreapp2.2\FileBagWebApi.RazorAssemblyInfo.cache
+c:\Users\rvilla\Desktop\DotNet\FileBagWebApi\FileBagWebApi\obj\Debug\netcoreapp2.2\FileBagWebApi.RazorAssemblyInfo.cs
+c:\Users\rvilla\Desktop\DotNet\FileBagWebApi\FileBagWebApi\obj\Debug\netcoreapp2.2\FileBagWebApi.AssemblyInfoInputs.cache
+c:\Users\rvilla\Desktop\DotNet\FileBagWebApi\FileBagWebApi\obj\Debug\netcoreapp2.2\FileBagWebApi.AssemblyInfo.cs
+C:\Users\rvilla\Desktop\DotNet\FileBagWebApi\FileBagWebApi\bin\Debug\netcoreapp2.2\FileBagWebApi.deps.json
+C:\Users\rvilla\Desktop\DotNet\FileBagWebApi\FileBagWebApi\bin\Debug\netcoreapp2.2\FileBagWebApi.runtimeconfig.json
+C:\Users\rvilla\Desktop\DotNet\FileBagWebApi\FileBagWebApi\bin\Debug\netcoreapp2.2\FileBagWebApi.runtimeconfig.dev.json
+c:\Users\rvilla\Desktop\DotNet\FileBagWebApi\FileBagWebApi\bin\Debug\netcoreapp2.2\FileBagWebApi.dll
+c:\Users\rvilla\Desktop\DotNet\FileBagWebApi\FileBagWebApi\bin\Debug\netcoreapp2.2\FileBagWebApi.pdb
+c:\Users\rvilla\Desktop\DotNet\FileBagWebApi\FileBagWebApi\obj\Debug\netcoreapp2.2\FileBagWebApi.RazorTargetAssemblyInfo.cache
+c:\Users\rvilla\Desktop\DotNet\FileBagWebApi\FileBagWebApi\obj\Debug\netcoreapp2.2\FileBagWebApi.dll
+c:\Users\rvilla\Desktop\DotNet\FileBagWebApi\FileBagWebApi\obj\Debug\netcoreapp2.2\FileBagWebApi.pdb
