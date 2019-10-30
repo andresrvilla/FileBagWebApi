@@ -23,7 +23,7 @@ namespace FileBagWebApi.Controllers
         {
             RequestIdentifier identifier = new RequestIdentifier(){
                 ApplicationId=new Guid(ApplicationId),
-                EntityId=new Guid(EntityTypeId)
+                EntityTypeId=new Guid(EntityTypeId)
             };
             return Ok(await fileService.AllActive(identifier));
         }
