@@ -5,6 +5,30 @@ VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileBagWebApi", "FileBagWebApi\FileBagWebApi.csproj", "{B0807635-F576-497E-834D-3B1628D87E84}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileBagWebApi.Entities", "FileBagWebApi.BussinessEntities\FileBagWebApi.Entities.csproj", "{28C8A143-2879-4E44-8D3A-44C15FC05F6E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileBagWebApi.ServiceClasses", "FileBagWebApi.ServiceClasses\FileBagWebApi.ServiceClasses.csproj", "{13668D14-D821-4D76-9681-E8DFD4EDE665}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileBagWebApi.DataAccess.EntityFramework", "FileBagWebApi.DataAccess\FileBagWebApi.DataAccess.EntityFramework.csproj", "{37B1A6BE-FFD4-48E4-9C85-427B9A436C2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{AE9BB1A1-F4C6-47A7-BF8C-6574464BA8E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileBagWebApi.DataAccess.Interfaces", "FileBagWebApi.DataAccess.Interfaces\FileBagWebApi.DataAccess.Interfaces.csproj", "{1795CBEE-7314-49E2-909A-94EEF87021A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bussiness", "Bussiness", "{586ED448-0ACE-45DD-A687-52CB7B373C5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileBagWebApi.Bussiness.Interfaces", "FileBagWebApi.Bussiness.Interfaces\FileBagWebApi.Bussiness.Interfaces.csproj", "{84288BA8-B8F9-4708-81F2-504ED137675C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileBagWebApi.Bussiness.Implementation", "FileBagWebApi.Bussiness.Implementation\FileBagWebApi.Bussiness.Implementation.csproj", "{6678824A-7957-43EB-B5B1-FEE6554E53B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileBagWebApi.Bussiness.Implementation.Test", "FileBagWebApi.Bussiness.Implementation.Test\FileBagWebApi.Bussiness.Implementation.Test.csproj", "{9100BF53-69A8-48CB-8145-D92D51A8763D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{FC878EF2-A4CB-4FE0-B4B6-A6C8F7851BEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileBagWebApi.Utilities.NetCore", "FileBagWebApi.Utilities.NetCore\FileBagWebApi.Utilities.NetCore.csproj", "{156FFBAC-2C8B-470D-8D76-AA2D212A9C97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileBagWebApi.Utilities.NetCore.Interfaces", "FileBagWebApi.Utilities.NetCore.Interfaces\FileBagWebApi.Utilities.NetCore.Interfaces.csproj", "{972A0018-AB2D-47CB-9B61-264683F62C0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +39,54 @@ Global
 		{B0807635-F576-497E-834D-3B1628D87E84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0807635-F576-497E-834D-3B1628D87E84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0807635-F576-497E-834D-3B1628D87E84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28C8A143-2879-4E44-8D3A-44C15FC05F6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C8A143-2879-4E44-8D3A-44C15FC05F6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C8A143-2879-4E44-8D3A-44C15FC05F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C8A143-2879-4E44-8D3A-44C15FC05F6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13668D14-D821-4D76-9681-E8DFD4EDE665}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13668D14-D821-4D76-9681-E8DFD4EDE665}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13668D14-D821-4D76-9681-E8DFD4EDE665}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13668D14-D821-4D76-9681-E8DFD4EDE665}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37B1A6BE-FFD4-48E4-9C85-427B9A436C2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37B1A6BE-FFD4-48E4-9C85-427B9A436C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37B1A6BE-FFD4-48E4-9C85-427B9A436C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37B1A6BE-FFD4-48E4-9C85-427B9A436C2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1795CBEE-7314-49E2-909A-94EEF87021A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1795CBEE-7314-49E2-909A-94EEF87021A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1795CBEE-7314-49E2-909A-94EEF87021A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1795CBEE-7314-49E2-909A-94EEF87021A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84288BA8-B8F9-4708-81F2-504ED137675C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84288BA8-B8F9-4708-81F2-504ED137675C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84288BA8-B8F9-4708-81F2-504ED137675C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84288BA8-B8F9-4708-81F2-504ED137675C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6678824A-7957-43EB-B5B1-FEE6554E53B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6678824A-7957-43EB-B5B1-FEE6554E53B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6678824A-7957-43EB-B5B1-FEE6554E53B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6678824A-7957-43EB-B5B1-FEE6554E53B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9100BF53-69A8-48CB-8145-D92D51A8763D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9100BF53-69A8-48CB-8145-D92D51A8763D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9100BF53-69A8-48CB-8145-D92D51A8763D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9100BF53-69A8-48CB-8145-D92D51A8763D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{156FFBAC-2C8B-470D-8D76-AA2D212A9C97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{156FFBAC-2C8B-470D-8D76-AA2D212A9C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{156FFBAC-2C8B-470D-8D76-AA2D212A9C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{156FFBAC-2C8B-470D-8D76-AA2D212A9C97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{972A0018-AB2D-47CB-9B61-264683F62C0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{972A0018-AB2D-47CB-9B61-264683F62C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{972A0018-AB2D-47CB-9B61-264683F62C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{972A0018-AB2D-47CB-9B61-264683F62C0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{37B1A6BE-FFD4-48E4-9C85-427B9A436C2A} = {AE9BB1A1-F4C6-47A7-BF8C-6574464BA8E4}
+		{1795CBEE-7314-49E2-909A-94EEF87021A7} = {AE9BB1A1-F4C6-47A7-BF8C-6574464BA8E4}
+		{84288BA8-B8F9-4708-81F2-504ED137675C} = {586ED448-0ACE-45DD-A687-52CB7B373C5B}
+		{6678824A-7957-43EB-B5B1-FEE6554E53B5} = {586ED448-0ACE-45DD-A687-52CB7B373C5B}
+		{9100BF53-69A8-48CB-8145-D92D51A8763D} = {586ED448-0ACE-45DD-A687-52CB7B373C5B}
+		{156FFBAC-2C8B-470D-8D76-AA2D212A9C97} = {FC878EF2-A4CB-4FE0-B4B6-A6C8F7851BEF}
+		{972A0018-AB2D-47CB-9B61-264683F62C0A} = {FC878EF2-A4CB-4FE0-B4B6-A6C8F7851BEF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0F92CC2C-A0FE-4752-8C7E-B1454CD2A596}

@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200324040748_MigracionInicial.cs" />
+    <Compile Remove="Migrations\20200324040748_MigracionInicial.Designer.cs" />
+    <Compile Remove="Migrations\20200324063305_MigracionInicial.cs" />
+    <Compile Remove="Migrations\20200324063305_MigracionInicial.Designer.cs" />
+    <Compile Remove="Migrations\20200324063519_MigracionInicial.cs" />
+    <Compile Remove="Migrations\20200324063519_MigracionInicial.Designer.cs" />
+    <Compile Remove="Migrations\20200324065227_MigracionInicial.cs" />
+    <Compile Remove="Migrations\20200324065227_MigracionInicial.Designer.cs" />
+    <Compile Remove="Migrations\20200324065358_MigracionInicial.cs" />
+    <Compile Remove="Migrations\20200324065358_MigracionInicial.Designer.cs" />
+    <Compile Remove="Migrations\20200324065659_MigracionInicial.cs" />
+    <Compile Remove="Migrations\20200324065659_MigracionInicial.Designer.cs" />
+    <Compile Remove="Migrations\20200324070831_MigracionInicial.cs" />
+    <Compile Remove="Migrations\20200324070831_MigracionInicial.Designer.cs" />
+    <Compile Remove="Migrations\20200324071217_MigracionInicial.cs" />
+    <Compile Remove="Migrations\20200324071217_MigracionInicial.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FileBagWebApi.BussinessEntities\FileBagWebApi.Entities.csproj" />
+    <ProjectReference Include="..\FileBagWebApi.DataAccess.Interfaces\FileBagWebApi.DataAccess.Interfaces.csproj" />
+    <ProjectReference Include="..\FileBagWebApi.Utilities.NetCore.Interfaces\FileBagWebApi.Utilities.NetCore.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>

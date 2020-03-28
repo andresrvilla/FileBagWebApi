@@ -1,8 +1,8 @@
 using System;
 
-namespace FileBagWebApi.Models
+namespace FileBagWebApi.Entities.Models
 {
-    public class FileData
+    public class FileDetail
     {
          public Guid Id { get; set; }
 

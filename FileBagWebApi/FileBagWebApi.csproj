@@ -3,4 +3,26 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FileBagWebApi.Bussiness.Implementation\FileBagWebApi.Bussiness.Implementation.csproj" />
+    <ProjectReference Include="..\FileBagWebApi.Bussiness.Interfaces\FileBagWebApi.Bussiness.Interfaces.csproj" />
+    <ProjectReference Include="..\FileBagWebApi.DataAccess\FileBagWebApi.DataAccess.EntityFramework.csproj" />
+    <ProjectReference Include="..\FileBagWebApi.ServiceClasses\FileBagWebApi.ServiceClasses.csproj" />
+    <ProjectReference Include="..\FileBagWebApi.Utilities.NetCore\FileBagWebApi.Utilities.NetCore.csproj" />
+  </ItemGroup>
 </Project>

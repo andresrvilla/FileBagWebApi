@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FileBagWebApi.Models;
-using FileBagWebApi.Services;
-using FileBagWebApi.Services.Interfaces;
+﻿using FileBagWebApi.Services.Interfaces;
+using FileBagWebApi.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FileBagWebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class FilesController : ControllerBase
     {
@@ -17,40 +15,95 @@ namespace FileBagWebApi.Controllers
 
         public FilesController(IFileService fileService) => this.fileService = fileService;
 
-        // GET api/values
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<FileMetaData>>> Get(string ApplicationId,string EntityTypeId)
+        /// <summary>
+        /// Returns all active Files Resume
+        /// </summary>
+        /// <param name="identifier">Request Identifier</param>
+        /// <returns>A list of all active resumes</returns>
+        [HttpGet("{applicationId}/{entityTypeId}")]
+        public async Task<ActionResult<IEnumerable<FileResumeDTO>>> All(string applicationId, string entityTypeId)
         {
-            RequestIdentifier identifier = new RequestIdentifier(){
-                ApplicationId=new Guid(ApplicationId),
-                EntityTypeId=new Guid(EntityTypeId)
-            };
+            var identifier = new RequestIdentifier() { applicationId = applicationId, entityTypeId = entityTypeId };
             return Ok(await fileService.AllActive(identifier));
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        /// <summary>
+        /// Returns the FileResume identified by <see cref="id"/>
+        /// </summary>
+        /// <param name="identifier">Request Identifier</param>
+        /// <param name="id">File Identifier</param>
+        /// <returns>The resume identified by <see cref="id"/></returns>
+        [HttpGet("{applicationId}/{entityTypeId}/{id}/resume")]
+        public async Task<ActionResult<FileResumeDTO>> GetResume(string applicationId, string entityTypeId, string id)
         {
-            return "value";
+            var identifier = new RequestIdentifier() { applicationId = applicationId, entityTypeId = entityTypeId };
+            return Ok(await fileService.FileResumeById(identifier, new Guid(id)));
         }
 
+        /// <summary>
+        /// Returns the FileResume identified by <see cref="id"/>
+        /// </summary>
+        /// <param name="identifier">Request Identifier</param>
+        /// <param name="id">File Identifier</param>
+        /// <returns>The resume identified by <see cref="id"/></returns>
+        [HttpGet("{applicationId}/{entityTypeId}/{id}")]
+        public async Task<ActionResult<FileResumeDTO>> Get(string applicationId, string entityTypeId, string id)
+        {
+            var identifier = new RequestIdentifier() { applicationId = applicationId, entityTypeId = entityTypeId };
+            return Ok(await fileService.FileById(identifier, new Guid(id)));
+        }
+        /*
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<IEnumerable<FileResumeDTO>>> Post(RequestIdentifier identifier)
         {
+            List<FileElementResume> result = new List<FileElementResume>();
+            foreach (var file in Request.Form.Files)
+            {
+                FileDTO fileDTO = new FileDTO()
+                {
+                    contentLength = file.Length,
+                    data = null,
+                    mimeType = file.ContentType,
+                    name = file.Name
+                };
+
+                await file.CopyToAsync(fileDTO.data);
+
+                result.Add(await fileService.AddFile(identifier, fileDTO));
+            }
+            return Ok(result);
         }
 
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public async Task<ActionResult<FileElementResume>> Put(FileRequestDTO fileDetailDTO)
         {
+            List<FileElementResume> result = new List<FileElementResume>();
+            foreach (var file in Request.Form.Files)
+            {
+
+                FileDTO fileDTO = new FileDTO()
+                {
+                    contentLength = file.Length,
+                    data = null,
+                    mimeType = file.ContentType,
+                    name = file.Name
+                };
+
+                await file.CopyToAsync(fileDTO.data);
+
+                result.Add(await fileService.AddOrUpdateFile(fileDetailDTO, fileDTO));
+            }
+            return Ok(result);
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult<TransactionResult>> Delete(RequestIdentifier identifier, string id)
         {
+            return Ok(await fileService.RemoveFile(identifier, new Guid(id)));
         }
+        */
     }
 }
