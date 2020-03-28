@@ -9,6 +9,7 @@ namespace FileBagWebApi.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    [ApiVersion("1.0")]
     public class FilesController : ControllerBase
     {
         private IFileService fileService;

@@ -60,7 +60,7 @@ namespace FileBagWebApi.DataAccess.EntityFramework
             catch(Exception ex)
             {
                 log.Error(ex);
-                throw new FileBagWebApiDatabaseException();
+                throw new FileBagWebApiDatabaseException(ex.Message);
             }
             
         }
@@ -86,7 +86,7 @@ namespace FileBagWebApi.DataAccess.EntityFramework
             catch (Exception ex)
             {
                 log.Error(ex);
-                throw new FileBagWebApiDatabaseException();
+                throw new FileBagWebApiDatabaseException(ex.Message);
             }
         }
     }

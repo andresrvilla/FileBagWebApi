@@ -10,5 +10,10 @@ namespace FileBagWebApi.Entities.Exceptions
         {
 
         }
+
+        public FileBagWebApiDatabaseException(string message):base (message)
+        {
+
+        }
     }
 }

@@ -19,11 +19,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.Extensions.Hosting;
 
 namespace FileBagWebApi
 {
@@ -43,12 +46,24 @@ namespace FileBagWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllers();
+
             services.AddSingleton(typeof(IApplicationDataAccess), typeof(ApplicationDataAccess));
             services.AddSingleton(typeof(IApplicationBussiness), typeof(ApplicationBussiness));
+            services.AddSingleton(typeof(IMemoryCache), typeof(MemoryCache));
             services.AddSingleton(typeof(IInMemoryCache), typeof(InMemoryCache));
             services.AddSingleton(typeof(FileBagContext), typeof(FileBagContext));
 
+            // Add API Versioning to as service to your project 
+            services.AddApiVersioning(config =>
+            {
+                // Specify the default API Version
+                config.DefaultApiVersion = new ApiVersion(1, 0);
+                // If the client hasn't specified the API version in the request, use the default API version number 
+                config.AssumeDefaultVersionWhenUnspecified = true;
+                // Advertise the API versions supported for the particular endpoint
+                config.ReportApiVersions = true;
+            });
 
             services.AddSwaggerGen(c =>
             {
@@ -57,7 +72,7 @@ namespace FileBagWebApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
