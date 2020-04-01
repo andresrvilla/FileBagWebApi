@@ -1,12 +1,10 @@
 ﻿using FileBagWebApi.Entities.Models;
 using FileBagWebApi.ServiceClasses.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace FileBagWebApi.ServiceClasses.ViewModel
+namespace FileBagWebApi.Entities.ViewModels
 {
-    public class ApplicationDTO: IDTO<Application, ApplicationDTO>
+    public class ApplicationDTO : IDTO<Application, ApplicationDTO>
     {
         public string Id { get; set; }
 
@@ -28,7 +26,9 @@ namespace FileBagWebApi.ServiceClasses.ViewModel
             {
                 Id = new Guid(Id),
                 Name = Name,
-                URI = URI
+                URI = URI,
+                Secret = string.Empty,
+                Token = string.Empty
             };
         }
     }

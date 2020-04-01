@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace FileBagWebApi.ViewModel
+namespace FileBagWebApi.Entities.ViewModels
 {
     public class FileDTO
     {

@@ -15,7 +15,7 @@ namespace FileBagWebApi.DataAccess.EntityFramework.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.2")
+                .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -29,6 +29,18 @@ namespace FileBagWebApi.DataAccess.EntityFramework.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(96)")
                         .HasMaxLength(96);
+
+                    b.Property<byte>("RowStatus")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("Secret")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("URI")
                         .IsRequired()
@@ -79,13 +91,13 @@ namespace FileBagWebApi.DataAccess.EntityFramework.Migrations
                         .HasColumnType("nvarchar(32)")
                         .HasMaxLength(32);
 
-                    b.Property<Guid?>("DataId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("EntityType")
                         .IsRequired()
                         .HasColumnType("nvarchar(96)")
                         .HasMaxLength(96);
+
+                    b.Property<Guid?>("FileDetailId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("MimeType")
                         .IsRequired()
@@ -111,7 +123,7 @@ namespace FileBagWebApi.DataAccess.EntityFramework.Migrations
 
                     b.HasIndex("ApplicationId");
 
-                    b.HasIndex("DataId");
+                    b.HasIndex("FileDetailId");
 
                     b.ToTable("FileElement","filebag");
                 });
@@ -124,9 +136,9 @@ namespace FileBagWebApi.DataAccess.EntityFramework.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FileBagWebApi.Entities.Models.FileDetail", "Data")
+                    b.HasOne("FileBagWebApi.Entities.Models.FileDetail", "FileDetail")
                         .WithMany()
-                        .HasForeignKey("DataId");
+                        .HasForeignKey("FileDetailId");
                 });
 #pragma warning restore 612, 618
         }

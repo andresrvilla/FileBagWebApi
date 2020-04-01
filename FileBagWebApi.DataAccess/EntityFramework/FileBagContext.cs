@@ -38,9 +38,7 @@ namespace FileBagWebApi.DataAccess.Context
             modelBuilder.Entity<Application>()
                 .ToTable("Application", "filebag");
 
-           /*modelBuilder.Entity<FileElement>()
-                .Property(e => e.Application)
-                .IsRequired();*/
+            #region FileElement
 
             modelBuilder.Entity<FileElement>()
                 .Property(e => e.EntityType)
@@ -77,6 +75,10 @@ namespace FileBagWebApi.DataAccess.Context
                 .Property(e => e.Status)
                 .HasColumnType("tinyint");
 
+            #endregion
+
+            #region Application
+
             modelBuilder.Entity<Application>()
                 .Property(e => e.Name)
                 .HasMaxLength(96)
@@ -89,6 +91,21 @@ namespace FileBagWebApi.DataAccess.Context
 
             modelBuilder.Entity<Application>()
                 .HasAlternateKey(a => a.URI);
+
+            modelBuilder.Entity<Application>()
+                .Property(e => e.RowStatus)
+                .HasColumnType("tinyint");
+
+            modelBuilder.Entity<Application>()
+                .Property(e => e.Secret)
+                .HasMaxLength(128)
+                .IsRequired();
+
+            modelBuilder.Entity<Application>()
+                .Property(e => e.Token)
+                .HasMaxLength(128);
+
+            #endregion
 
         }
     }

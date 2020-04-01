@@ -4,4 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CSharpUtilities\Entities\CSharpUtilities.Entities.Interfaces\CSharpUtilities.Entities.Interfaces.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -11,13 +11,17 @@ namespace FileBagWebApi.Bussiness.Implementation.Test
     [TestClass]
     public class ApplicationBussinessUnitTest
     {
+        private const string cypherKey = "acf7ef943fdeb3cbfed8dd0d8f584731";
+
+
+        #region ctor tests
         [TestMethod]
         public void ApplicationBussiness_ConstructorShouldSetDataAccess()
         {
             Mock<IApplicationDataAccess> dataAccessMock = new Mock<IApplicationDataAccess>();
             IApplicationDataAccess dataAccess = dataAccessMock.Object;
 
-            IApplicationBussiness applicationBussiness = new ApplicationBussiness(dataAccess);
+            IApplicationBussiness applicationBussiness = new ApplicationBussiness(dataAccess,cypherKey);
             Assert.AreSame(dataAccess, applicationBussiness._dataAccess);
         }
 
@@ -25,18 +29,61 @@ namespace FileBagWebApi.Bussiness.Implementation.Test
         [ExpectedException(typeof(ArgumentNullException))]
         public void ApplicationBussiness_ConstructorShouldThrowExceptionWhenDataAccessIsNull()
         {
-            IApplicationBussiness applicationBussiness = new ApplicationBussiness(null);
+            IApplicationBussiness applicationBussiness = new ApplicationBussiness(null, cypherKey);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ApplicationBussiness_ConstructorShouldThrowExceptionWhenKeyIsNull()
+        {
+            Mock<IApplicationDataAccess> dataAccessMock = new Mock<IApplicationDataAccess>();
+            IApplicationDataAccess dataAccess = dataAccessMock.Object;
+
+            IApplicationBussiness applicationBussiness = new ApplicationBussiness(dataAccess, null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ApplicationBussiness_ConstructorShouldThrowExceptionWhenKeyIsEmpty()
+        {
+            Mock<IApplicationDataAccess> dataAccessMock = new Mock<IApplicationDataAccess>();
+            IApplicationDataAccess dataAccess = dataAccessMock.Object;
+
+            IApplicationBussiness applicationBussiness = new ApplicationBussiness(dataAccess, string.Empty);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ApplicationBussiness_ConstructorShouldThrowExceptionWhenKeyIsWhitespace()
+        {
+            Mock<IApplicationDataAccess> dataAccessMock = new Mock<IApplicationDataAccess>();
+            IApplicationDataAccess dataAccess = dataAccessMock.Object;
+
+            IApplicationBussiness applicationBussiness = new ApplicationBussiness(dataAccess, "".PadLeft(32, ' '));
+        }
+        #endregion
+
+        #region Register tests
         [TestMethod]
         public async Task ApplicationBussiness_RegisterShouldThrowExceptionWhenNameIsEmpty()
         {
             Mock<IApplicationDataAccess> dataAccessMock = new Mock<IApplicationDataAccess>();
             IApplicationDataAccess dataAccess = dataAccessMock.Object;
 
-            IApplicationBussiness applicationBussiness = new ApplicationBussiness(dataAccess);
-            await Assert.ThrowsExceptionAsync<ArgumentException>(() => applicationBussiness.Register(string.Empty, "randomURI"));
+            IApplicationBussiness applicationBussiness = new ApplicationBussiness(dataAccess, cypherKey);
+            await Assert.ThrowsExceptionAsync<ArgumentException>(() => applicationBussiness.Register(string.Empty, "randomSecret", "randomURI")); ;
         }
+
+        [TestMethod]
+        public async Task ApplicationBussiness_RegisterShouldThrowExceptionWhenSecretIsEmpty()
+        {
+            Mock<IApplicationDataAccess> dataAccessMock = new Mock<IApplicationDataAccess>();
+            IApplicationDataAccess dataAccess = dataAccessMock.Object;
+
+            IApplicationBussiness applicationBussiness = new ApplicationBussiness(dataAccess, cypherKey);
+            await Assert.ThrowsExceptionAsync<ArgumentException>(() => applicationBussiness.Register("randomName", string.Empty, "randomURI")); ;
+        }
+
 
         [TestMethod]
         public async Task ApplicationBussiness_RegisterShouldThrowExceptionWhenURIIsEmpty()
@@ -44,8 +91,8 @@ namespace FileBagWebApi.Bussiness.Implementation.Test
             Mock<IApplicationDataAccess> dataAccessMock = new Mock<IApplicationDataAccess>();
             IApplicationDataAccess dataAccess = dataAccessMock.Object;
 
-            IApplicationBussiness applicationBussiness = new ApplicationBussiness(dataAccess);
-            await Assert.ThrowsExceptionAsync<ArgumentException>(() => applicationBussiness.Register("randomName", string.Empty));
+            IApplicationBussiness applicationBussiness = new ApplicationBussiness(dataAccess, cypherKey);
+            await Assert.ThrowsExceptionAsync<ArgumentException>(() => applicationBussiness.Register("randomName", "randomSecret", string.Empty));
         }
 
         [TestMethod]
@@ -53,14 +100,15 @@ namespace FileBagWebApi.Bussiness.Implementation.Test
         {
             Application application = new Application() { Id = Guid.NewGuid(), Name = "TestName", URI = "uri.test.com" };
             Mock<IApplicationDataAccess> dataAccessMock = new Mock<IApplicationDataAccess>();
-            dataAccessMock.Setup(d => d.Register("randomName", "randomURI")).Returns(Task.FromResult(application));
+            dataAccessMock.Setup(d => d.Register("randomName", It.IsAny<string>(), "randomURI")).Returns(Task.FromResult(application));
             IApplicationDataAccess dataAccess = dataAccessMock.Object;
 
-            IApplicationBussiness applicationBussiness = new ApplicationBussiness(dataAccess);
-            var result = await applicationBussiness.Register("randomName", "randomURI");
+            IApplicationBussiness applicationBussiness = new ApplicationBussiness(dataAccess, cypherKey);
+            var result = await applicationBussiness.Register("randomName", "randomSecret", "randomURI");
             Assert.IsNotNull(result);
             Assert.AreEqual("TestName", result.Name);
             Assert.AreEqual("uri.test.com", result.URI);
         }
+        #endregion
     }
 }

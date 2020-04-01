@@ -2,6 +2,21 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "JWT/6.1.3": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "9.0.1",
+          "System.ComponentModel.Primitives": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.5.1",
+          "System.Security.Cryptography.Csp": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/JWT.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/JWT.dll": {}
+        }
+      },
       "log4net/2.0.8": {
         "type": "package",
         "dependencies": {
@@ -37,6 +52,31 @@
         },
         "runtime": {
           "lib/netstandard1.3/log4net.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Client/5.2.7": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.1",
+          "Newtonsoft.Json.Bson": "1.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Net.Http.Formatting.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Net.Http.Formatting.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Core/5.2.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.WebApi.Client": "5.2.7"
+        },
+        "compile": {
+          "lib/net45/System.Web.Http.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Http.dll": {}
         }
       },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
@@ -900,6 +940,19 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "Newtonsoft.Json.Bson/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "10.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
+        }
+      },
       "NuGet.Frameworks/4.7.0": {
         "type": "package",
         "dependencies": {
@@ -1282,7 +1335,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/System.ComponentModel.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.ComponentModel.dll": {}
@@ -1305,7 +1358,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/System.ComponentModel.Primitives.dll": {}
         },
         "runtime": {
           "lib/netstandard1.0/System.ComponentModel.Primitives.dll": {}
@@ -2151,17 +2204,13 @@
           "ref/netstandard1.0/System.Reflection.Primitives.dll": {}
         }
       },
-      "System.Reflection.TypeExtensions/4.3.0": {
+      "System.Reflection.TypeExtensions/4.5.1": {
         "type": "package",
-        "dependencies": {
-          "System.Reflection": "4.3.0",
-          "System.Runtime": "4.3.0"
-        },
         "compile": {
-          "ref/netstandard1.5/System.Reflection.TypeExtensions.dll": {}
+          "ref/netcoreapp2.0/_._": {}
         },
         "runtime": {
-          "lib/netstandard1.5/System.Reflection.TypeExtensions.dll": {}
+          "lib/netcoreapp2.0/_._": {}
         }
       },
       "System.Resources.ResourceManager/4.3.0": {
@@ -2438,7 +2487,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Security.Cryptography.Csp.dll": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Security.Cryptography.Csp.dll": {
@@ -2915,6 +2964,36 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "CSharpUtilities.Entities/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/CSharpUtilities.Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CSharpUtilities.Entities.dll": {}
+        }
+      },
+      "CSharpUtilities.Entities.Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/CSharpUtilities.Entities.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CSharpUtilities.Entities.Interfaces.dll": {}
+        }
+      },
+      "CSharpUtilities.Extensions/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/CSharpUtilities.Extensions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CSharpUtilities.Extensions.dll": {}
+        }
+      },
       "CSharpUtilities.Net.Rest.DTOClasses/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -2925,11 +3004,23 @@
           "bin/placeholder/CSharpUtilities.Net.Rest.DTOClasses.dll": {}
         }
       },
+      "EnumUtil/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/EnumUtil.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EnumUtil.dll": {}
+        }
+      },
       "FileBagWebApi.Bussiness.Implementation/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "CSharpUtilities.Extensions": "1.0.0",
           "FileBagWebApi.Bussiness.Interfaces": "1.0.0",
+          "JWT": "6.1.3",
           "log4net": "2.0.8"
         },
         "compile": {
@@ -2957,6 +3048,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "CSharpUtilities.Entities": "1.0.0",
+          "EnumUtil": "1.0.0",
           "FileBagWebApi.DataAccess.Interfaces": "1.0.0",
           "FileBagWebApi.Entities": "1.0.0",
           "FileBagWebApi.Utilities.NetCore.Interfaces": "1.0.0",
@@ -2987,24 +3080,14 @@
       "FileBagWebApi.Entities/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/FileBagWebApi.Entities.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/FileBagWebApi.Entities.dll": {}
-        }
-      },
-      "FileBagWebApi.ServiceClasses/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "FileBagWebApi.Entities": "1.0.0"
+          "CSharpUtilities.Entities.Interfaces": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/FileBagWebApi.ServiceClasses.dll": {}
+          "bin/placeholder/FileBagWebApi.Entities.dll": {}
         },
         "runtime": {
-          "bin/placeholder/FileBagWebApi.ServiceClasses.dll": {}
+          "bin/placeholder/FileBagWebApi.Entities.dll": {}
         }
       },
       "FileBagWebApi.Utilities.NetCore/1.0.0": {
@@ -3035,6 +3118,32 @@
     }
   },
   "libraries": {
+    "JWT/6.1.3": {
+      "sha512": "RVz5d5teVSTZnbWOXewkLA2hG41zsNq8K88Bzll1GzmkIFgyCFYNVo1utDbDYCSCYOPhViyFvpDkzKnm87j2Sw==",
+      "type": "package",
+      "path": "jwt/6.1.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "jwt.6.1.3.nupkg.sha512",
+        "jwt.nuspec",
+        "lib/net46/JWT.dll",
+        "lib/net46/JWT.pdb",
+        "lib/net46/JWT.xml",
+        "lib/net472/JWT.dll",
+        "lib/net472/JWT.pdb",
+        "lib/net472/JWT.xml",
+        "lib/net48/JWT.dll",
+        "lib/net48/JWT.pdb",
+        "lib/net48/JWT.xml",
+        "lib/netstandard1.3/JWT.dll",
+        "lib/netstandard1.3/JWT.pdb",
+        "lib/netstandard1.3/JWT.xml",
+        "lib/netstandard2.0/JWT.dll",
+        "lib/netstandard2.0/JWT.pdb",
+        "lib/netstandard2.0/JWT.xml"
+      ]
+    },
     "log4net/2.0.8": {
       "sha512": "N41MQGHZImiCfn0cUuSBjZxrcNfIQCuCgQP0rpgB3J/NWponEh3lc1LxJEuIsPAR9Oc1jVvfkNNFCY1C5hf9LA==",
       "type": "package",
@@ -3057,6 +3166,37 @@
         "lib/netstandard1.3/log4net.dll",
         "log4net.2.0.8.nupkg.sha512",
         "log4net.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.WebApi.Client/5.2.7": {
+      "sha512": "/76fAHknzvFqbznS6Uj2sOyE9rJB3PltY+f53TH8dX9RiGhk02EhuFCWljSj5nnqKaTsmma8DFR50OGyQ4yJ1g==",
+      "type": "package",
+      "path": "microsoft.aspnet.webapi.client/5.2.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/System.Net.Http.Formatting.dll",
+        "lib/net45/System.Net.Http.Formatting.xml",
+        "lib/netstandard2.0/System.Net.Http.Formatting.dll",
+        "lib/netstandard2.0/System.Net.Http.Formatting.xml",
+        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll",
+        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.xml",
+        "microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
+        "microsoft.aspnet.webapi.client.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.WebApi.Core/5.2.7": {
+      "sha512": "gM2QzApnHdy1FbKUJ/ROGJSm69P2G+HMoVd/t5Vq1O/zZ5TI4IKC9PX6nUfRt/NHgebZOIWHpB4/4K4inuy4yQ==",
+      "type": "package",
+      "path": "microsoft.aspnet.webapi.core/5.2.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/web.config.transform",
+        "lib/net45/System.Web.Http.dll",
+        "lib/net45/System.Web.Http.xml",
+        "microsoft.aspnet.webapi.core.5.2.7.nupkg.sha512",
+        "microsoft.aspnet.webapi.core.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
@@ -4459,6 +4599,21 @@
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "newtonsoft.json.11.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec"
+      ]
+    },
+    "Newtonsoft.Json.Bson/1.0.1": {
+      "sha512": "5PYT/IqQ+UK31AmZiSS102R6EsTo+LGTSI8bp7WAUqDKaF4wHXD8U9u4WxTI1vc64tYi++8p3dk3WWNqPFgldw==",
+      "type": "package",
+      "path": "newtonsoft.json.bson/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Newtonsoft.Json.Bson.dll",
+        "lib/net45/Newtonsoft.Json.Bson.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.Bson.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.Bson.xml",
+        "newtonsoft.json.bson.1.0.1.nupkg.sha512",
+        "newtonsoft.json.bson.nuspec"
       ]
     },
     "NuGet.Frameworks/4.7.0": {
@@ -7313,20 +7468,26 @@
         "system.reflection.primitives.nuspec"
       ]
     },
-    "System.Reflection.TypeExtensions/4.3.0": {
-      "sha512": "7u6ulLcZbyxB5Gq0nMkQttcdBTx57ibzw+4IOXEfR+sXYQoHvjW5LTLyNr8O22UIMrqYbchJQJnos4eooYzYJA==",
+    "System.Reflection.TypeExtensions/4.5.1": {
+      "sha512": "fO8GMEkgoKioJ7cglZbhcnBgkCWWn9poS3G2jevS+fuwW9xJXMx7/1kr7dkwOJfo0pWqxLFWVcxlOr+WeK5ipA==",
       "type": "package",
-      "path": "system.reflection.typeextensions/4.3.0",
+      "path": "system.reflection.typeextensions/4.5.1",
       "files": [
         ".nupkg.metadata",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
         "lib/MonoTouch10/_._",
         "lib/net46/System.Reflection.TypeExtensions.dll",
-        "lib/net462/System.Reflection.TypeExtensions.dll",
+        "lib/net461/System.Reflection.TypeExtensions.dll",
         "lib/netcore50/System.Reflection.TypeExtensions.dll",
+        "lib/netcoreapp1.0/System.Reflection.TypeExtensions.dll",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.3/System.Reflection.TypeExtensions.dll",
         "lib/netstandard1.5/System.Reflection.TypeExtensions.dll",
+        "lib/netstandard2.0/System.Reflection.TypeExtensions.dll",
+        "lib/uap10.0.16299/_._",
         "lib/xamarinios10/_._",
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
@@ -7334,7 +7495,9 @@
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net46/System.Reflection.TypeExtensions.dll",
-        "ref/net462/System.Reflection.TypeExtensions.dll",
+        "ref/net461/System.Reflection.TypeExtensions.dll",
+        "ref/net461/System.Reflection.TypeExtensions.xml",
+        "ref/netcoreapp2.0/_._",
         "ref/netstandard1.3/System.Reflection.TypeExtensions.dll",
         "ref/netstandard1.3/System.Reflection.TypeExtensions.xml",
         "ref/netstandard1.3/de/System.Reflection.TypeExtensions.xml",
@@ -7357,13 +7520,19 @@
         "ref/netstandard1.5/ru/System.Reflection.TypeExtensions.xml",
         "ref/netstandard1.5/zh-hans/System.Reflection.TypeExtensions.xml",
         "ref/netstandard1.5/zh-hant/System.Reflection.TypeExtensions.xml",
+        "ref/netstandard2.0/System.Reflection.TypeExtensions.dll",
+        "ref/netstandard2.0/System.Reflection.TypeExtensions.xml",
+        "ref/uap10.0.16299/_._",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
         "runtimes/aot/lib/netcore50/System.Reflection.TypeExtensions.dll",
-        "system.reflection.typeextensions.4.3.0.nupkg.sha512",
-        "system.reflection.typeextensions.nuspec"
+        "runtimes/aot/lib/uap10.0.16299/_._",
+        "system.reflection.typeextensions.4.5.1.nupkg.sha512",
+        "system.reflection.typeextensions.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Resources.ResourceManager/4.3.0": {
@@ -9362,10 +9531,30 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "CSharpUtilities.Entities/1.0.0": {
+      "type": "project",
+      "path": "../CSharpUtilities/Entities/CSharpUtilities.Entities/CSharpUtilities.Entities.csproj",
+      "msbuildProject": "../CSharpUtilities/Entities/CSharpUtilities.Entities/CSharpUtilities.Entities.csproj"
+    },
+    "CSharpUtilities.Entities.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../CSharpUtilities/Entities/CSharpUtilities.Entities.Interfaces/CSharpUtilities.Entities.Interfaces.csproj",
+      "msbuildProject": "../CSharpUtilities/Entities/CSharpUtilities.Entities.Interfaces/CSharpUtilities.Entities.Interfaces.csproj"
+    },
+    "CSharpUtilities.Extensions/1.0.0": {
+      "type": "project",
+      "path": "../CSharpUtilities/CSharpUtilities.Extensions/CSharpUtilities.Extensions.csproj",
+      "msbuildProject": "../CSharpUtilities/CSharpUtilities.Extensions/CSharpUtilities.Extensions.csproj"
+    },
     "CSharpUtilities.Net.Rest.DTOClasses/1.0.0": {
       "type": "project",
       "path": "../CSharpUtilities/Net/Rest/CSharpUtilities.Net.Rest.DTOClasses/CSharpUtilities.Net.Rest.DTOClasses.csproj",
       "msbuildProject": "../CSharpUtilities/Net/Rest/CSharpUtilities.Net.Rest.DTOClasses/CSharpUtilities.Net.Rest.DTOClasses.csproj"
+    },
+    "EnumUtil/1.0.0": {
+      "type": "project",
+      "path": "../CSharpUtilities/External/EnumUtilities/EnumUtil/EnumUtil.csproj",
+      "msbuildProject": "../CSharpUtilities/External/EnumUtilities/EnumUtil/EnumUtil.csproj"
     },
     "FileBagWebApi.Bussiness.Implementation/1.0.0": {
       "type": "project",
@@ -9392,11 +9581,6 @@
       "path": "../FileBagWebApi.BussinessEntities/FileBagWebApi.Entities.csproj",
       "msbuildProject": "../FileBagWebApi.BussinessEntities/FileBagWebApi.Entities.csproj"
     },
-    "FileBagWebApi.ServiceClasses/1.0.0": {
-      "type": "project",
-      "path": "../FileBagWebApi.ServiceClasses/FileBagWebApi.ServiceClasses.csproj",
-      "msbuildProject": "../FileBagWebApi.ServiceClasses/FileBagWebApi.ServiceClasses.csproj"
-    },
     "FileBagWebApi.Utilities.NetCore/1.0.0": {
       "type": "project",
       "path": "../FileBagWebApi.Utilities.NetCore/FileBagWebApi.Utilities.NetCore.csproj",
@@ -9414,8 +9598,8 @@
       "FileBagWebApi.Bussiness.Implementation >= 1.0.0",
       "FileBagWebApi.Bussiness.Interfaces >= 1.0.0",
       "FileBagWebApi.DataAccess.EntityFramework >= 1.0.0",
-      "FileBagWebApi.ServiceClasses >= 1.0.0",
       "FileBagWebApi.Utilities.NetCore >= 1.0.0",
+      "Microsoft.AspNet.WebApi.Core >= 5.2.7",
       "Microsoft.AspNetCore.Mvc.Versioning >= 4.1.1",
       "Microsoft.EntityFrameworkCore.Design >= 3.1.3",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.3",
@@ -9469,9 +9653,6 @@
             "D:\\Desarrollo\\FileBagWebApi\\FileBagWebApi.DataAccess\\FileBagWebApi.DataAccess.EntityFramework.csproj": {
               "projectPath": "D:\\Desarrollo\\FileBagWebApi\\FileBagWebApi.DataAccess\\FileBagWebApi.DataAccess.EntityFramework.csproj"
             },
-            "D:\\Desarrollo\\FileBagWebApi\\FileBagWebApi.ServiceClasses\\FileBagWebApi.ServiceClasses.csproj": {
-              "projectPath": "D:\\Desarrollo\\FileBagWebApi\\FileBagWebApi.ServiceClasses\\FileBagWebApi.ServiceClasses.csproj"
-            },
             "D:\\Desarrollo\\FileBagWebApi\\FileBagWebApi.Utilities.NetCore\\FileBagWebApi.Utilities.NetCore.csproj": {
               "projectPath": "D:\\Desarrollo\\FileBagWebApi\\FileBagWebApi.Utilities.NetCore\\FileBagWebApi.Utilities.NetCore.csproj"
             }
@@ -9487,6 +9668,10 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
+          "Microsoft.AspNet.WebApi.Core": {
+            "target": "Package",
+            "version": "[5.2.7, )"
+          },
           "Microsoft.AspNetCore.Mvc.Versioning": {
             "target": "Package",
             "version": "[4.1.1, )"
@@ -9545,5 +9730,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.WebApi.Core 5.2.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.WebApi.Core",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

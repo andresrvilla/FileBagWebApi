@@ -8,6 +8,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.3">
       <PrivateAssets>all</PrivateAssets>
@@ -27,7 +28,9 @@
     <ProjectReference Include="..\FileBagWebApi.Bussiness.Implementation\FileBagWebApi.Bussiness.Implementation.csproj" />
     <ProjectReference Include="..\FileBagWebApi.Bussiness.Interfaces\FileBagWebApi.Bussiness.Interfaces.csproj" />
     <ProjectReference Include="..\FileBagWebApi.DataAccess\FileBagWebApi.DataAccess.EntityFramework.csproj" />
-    <ProjectReference Include="..\FileBagWebApi.ServiceClasses\FileBagWebApi.ServiceClasses.csproj" />
     <ProjectReference Include="..\FileBagWebApi.Utilities.NetCore\FileBagWebApi.Utilities.NetCore.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infraestructure\Security\" />
   </ItemGroup>
 </Project>

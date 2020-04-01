@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CSharpUtilities.Net.Rest.DTOClasses;
+﻿using CSharpUtilities.Net.Rest.DTOClasses;
 using FileBagWebApi.Bussiness.Interfaces;
-using FileBagWebApi.ServiceClasses.ViewModel;
+using FileBagWebApi.Entities.ViewModels;
+using FileBagWebApi.Infraestructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace FileBagWebApi.Controllers
 {
@@ -15,11 +15,15 @@ namespace FileBagWebApi.Controllers
     [ApiVersion("1.0")]
     public class ApplicationController : ControllerBase
     {
-        public IApplicationBussiness _applicationBussiness { get; set; }
+        private readonly IServiceTokenValidator _serviceTokenValidator;
 
-        public ApplicationController(IApplicationBussiness applicationBussiness)
+        private readonly IApplicationBussiness _applicationBussiness;
+
+
+        public ApplicationController(IApplicationBussiness applicationBussiness,IServiceTokenValidator serviceTokenValidator)
         {
             _applicationBussiness = applicationBussiness;
+            _serviceTokenValidator = serviceTokenValidator;
         }
 
         [HttpPost]
@@ -27,7 +31,7 @@ namespace FileBagWebApi.Controllers
         {
             try
             {
-                var result = await _applicationBussiness.Register(registerDTO.name, registerDTO.URI);
+                var result = await _applicationBussiness.Register(registerDTO.name, registerDTO.secret, registerDTO.URI);
                 if (result != null)
                 {
                     var app = new ApplicationDTO().Build(result);
@@ -44,14 +48,51 @@ namespace FileBagWebApi.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("{id}/exists")]
-        public async Task<IActionResult> Exists(string id)
+        [HttpPost]
+        [Route("Token")]
+        public async Task<IActionResult> Token([FromBody]TokenRequestDTO tokenRequestDTO)
         {
             try
             {
-                var result = await _applicationBussiness.Exists(id);
-                return Ok(new RestResponseObjectDTO(result));
+                var result = await _applicationBussiness.GetToken(tokenRequestDTO.id, tokenRequestDTO.secret);
+                if (result != null)
+                {
+                    //var app = new ApplicationDTO().Build(result);
+                    return Ok(new RestResponseObjectDTO(result));
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status404NotFound, new RestErrorResponseDTO(StatusCodes.Status404NotFound));
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new RestErrorResponseDTO(StatusCodes.Status500InternalServerError, ex.Message));
+            }
+        }
+
+        [HttpGet]
+        [Route("WhoIAm")]
+        public async Task<IActionResult> WhoIAm()
+        {
+            try
+            {
+                var validation = _serviceTokenValidator.Validate(Request.Headers);
+                if (validation != null)
+                {
+                    return validation;
+                }
+
+                var result = await _applicationBussiness.GetByToken(Request.Headers.GetToken());
+                if (result != null)
+                {
+                    var app = new ApplicationDTO().Build(result);
+                    return Ok(new RestResponseObjectDTO(app));
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status404NotFound, new RestErrorResponseDTO(StatusCodes.Status404NotFound));
+                }
             }
             catch (Exception ex)
             {

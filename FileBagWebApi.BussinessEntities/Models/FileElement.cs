@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharpUtilities.Entities.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,6 +14,8 @@ namespace FileBagWebApi.Entities.Models
         public Guid ApplicationId { get; set; }
 
         public string EntityType { get; set; }
+
+        public string EntitySubType { get; set; }
 
         public long ContentLength { get; set; }
 

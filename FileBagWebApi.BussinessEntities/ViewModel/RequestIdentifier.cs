@@ -1,6 +1,6 @@
 using System;
 
-namespace FileBagWebApi.ViewModel
+namespace FileBagWebApi.Entities.ViewModels
 {
     public class RequestIdentifier
     {

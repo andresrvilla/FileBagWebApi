@@ -1,5 +1,5 @@
-﻿using FileBagWebApi.Services.Interfaces;
-using FileBagWebApi.ViewModel;
+﻿using FileBagWebApi.Bussiness.Interfaces;
+using FileBagWebApi.Entities.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,9 +12,9 @@ namespace FileBagWebApi.Controllers
     [ApiVersion("1.0")]
     public class FilesController : ControllerBase
     {
-        private IFileService fileService;
+        private IFileBussiness fileService;
 
-        public FilesController(IFileService fileService) => this.fileService = fileService;
+        public FilesController(IFileBussiness fileService) => this.fileService = fileService;
 
         /// <summary>
         /// Returns all active Files Resume

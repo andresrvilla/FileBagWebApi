@@ -17,7 +17,10 @@ namespace FileBagWebApi.DataAccess.EntityFramework.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(maxLength: 96, nullable: false),
-                    URI = table.Column<string>(maxLength: 128, nullable: false)
+                    URI = table.Column<string>(maxLength: 128, nullable: false),
+                    Secret = table.Column<string>(maxLength: 128, nullable: false),
+                    Token = table.Column<string>(maxLength: 128, nullable: true),
+                    RowStatus = table.Column<byte>(type: "tinyint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -49,7 +52,7 @@ namespace FileBagWebApi.DataAccess.EntityFramework.Migrations
                     ContentLength = table.Column<long>(nullable: false),
                     Name = table.Column<string>(maxLength: 96, nullable: false),
                     MimeType = table.Column<string>(maxLength: 96, nullable: false),
-                    DataId = table.Column<Guid>(nullable: true),
+                    FileDetailId = table.Column<Guid>(nullable: true),
                     Creator = table.Column<string>(maxLength: 32, nullable: false),
                     CreationDate = table.Column<DateTime>(nullable: false),
                     Modifier = table.Column<string>(maxLength: 32, nullable: true),
@@ -68,8 +71,8 @@ namespace FileBagWebApi.DataAccess.EntityFramework.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_FileElement_FileDetail_DataId",
-                        column: x => x.DataId,
+                        name: "FK_FileElement_FileDetail_FileDetailId",
+                        column: x => x.FileDetailId,
                         principalSchema: "filebag",
                         principalTable: "FileDetail",
                         principalColumn: "Id",
@@ -83,10 +86,10 @@ namespace FileBagWebApi.DataAccess.EntityFramework.Migrations
                 column: "ApplicationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FileElement_DataId",
+                name: "IX_FileElement_FileDetailId",
                 schema: "filebag",
                 table: "FileElement",
-                column: "DataId");
+                column: "FileDetailId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

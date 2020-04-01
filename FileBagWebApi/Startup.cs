@@ -1,32 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using FileBagWebApi.Bussiness.Implementation;
+﻿using FileBagWebApi.Bussiness.Implementation;
 using FileBagWebApi.Bussiness.Interfaces;
 using FileBagWebApi.DataAccess.Context;
 using FileBagWebApi.DataAccess.EntityFramework;
 using FileBagWebApi.DataAccess.Interfaces;
-using FileBagWebApi.Services;
-using FileBagWebApi.Services.Interfaces;
+using FileBagWebApi.Infraestructure;
 using FileBagWebApi.Utilities.NetCore;
 using FileBagWebApi.Utilities.NetCore.Interfaces;
 using log4net;
 using log4net.Config;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using System.IO;
+using System.Reflection;
 
 namespace FileBagWebApi
 {
@@ -49,7 +40,9 @@ namespace FileBagWebApi
             services.AddControllers();
 
             services.AddSingleton(typeof(IApplicationDataAccess), typeof(ApplicationDataAccess));
-            services.AddSingleton(typeof(IApplicationBussiness), typeof(ApplicationBussiness));
+            services.AddSingleton(typeof(ITokenProvider), (x => new JWTProvider(Configuration.GetValue<double>("tokenExpiration"))));
+            services.AddSingleton<IApplicationBussiness>(x => new ApplicationBussiness(x.GetRequiredService<IApplicationDataAccess>(), x.GetRequiredService<ITokenProvider>(), Configuration.GetValue<string>("secret")));
+            services.AddSingleton(typeof(IServiceTokenValidator), typeof(ServiceTokenValidator));
             services.AddSingleton(typeof(IMemoryCache), typeof(MemoryCache));
             services.AddSingleton(typeof(IInMemoryCache), typeof(InMemoryCache));
             services.AddSingleton(typeof(FileBagContext), typeof(FileBagContext));
@@ -84,7 +77,7 @@ namespace FileBagWebApi
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
